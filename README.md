@@ -9,5 +9,5 @@ Could also perhaps integrate amazon.com api or REI.com to suggest where to find 
 
 Stores an object of clothing values that are tied to winter weather keys.
 
+Possibly a collection for each body part, i.e. what to wear on your head, your feet, etc etc
 
-Inspired by this chart: https://docs.google.com/spreadsheet/ccc?key=0AlvwYrlWhEL6cFBJNklGM0JJSV9xUUJzc0FpSnNoUVE&usp=sharing#gid=0
