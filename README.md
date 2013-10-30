@@ -15,3 +15,5 @@ README.md
 -Inspired by sites like logicalincrements.com, whatthefuckshouldimakefordinner.com, and the biking weather charts myself and other Minnesota cyclists often make for themselves.
 
 -Perhaps with a user login system visitors can also make custom profiles to store their own clothing preferences.
+
+-As some flavor content, you could pull in geo-tagged instagram photos with #biking #bikes etc from the user's location.
