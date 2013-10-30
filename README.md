@@ -4,7 +4,7 @@ README.md
 
 -It would use a 3rd party API to take in weather data and would use the weather info to find corresponding data in the database.
 
--User would have the option of alternatively suggesting warmer or colder outfit depending on their preference.
+-User would have the option of alternatively suggesting warmer or colder outfit depending on their preference. Either that, or you could generate 1 main suggested outfit and then 1 that is colder and 1 that is warmer.
 
 -Could also perhaps integrate amazon.com api or REI.com to suggest where to find an item of clothing they do not own
 
@@ -16,4 +16,4 @@ README.md
 
 -Perhaps with a user login system visitors can also make custom profiles to store their own clothing preferences.
 
--As some flavor content, you could pull in geo-tagged instagram photos with #biking #bikes etc from the user's location.
+-As some flavor content, you could pull in 2 or 3 geo-tagged instagram photos with #biking #bikes etc from the user's location. This would make the site more visually interesting and possibly give some relevant real-time info on the road conditions.
