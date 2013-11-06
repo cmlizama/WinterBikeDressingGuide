@@ -30,3 +30,5 @@ matt wrote a node module for open street maps to geocode, doesnt need an API key
 -Request module in node for API calls
 
 -Actually the data is probably too small to warrant a MongoDB database. Just put it in memory.
+
+/ browser sends html5 geolocation to server, server then reqests api to forecast with geolocation, then gets back weather data, then sends weather data back to browser

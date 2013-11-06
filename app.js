@@ -11,6 +11,7 @@ var path = require('path');
 
 var app = express();
 
+// require the forecast.io module
 var Forecast = require('forecast.io');
 
 // all environments
@@ -26,7 +27,42 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+
+//create my own instance of Forecast
 //my own Forecast.io API key a0a8fcbc5abfcc9ba961173dcc60e214
+var options = {
+  APIKey: 'a0a8fcbc5abfcc9ba961173dcc60e214'
+};
+
+console.log(options);
+
+var forecast = new Forecast(options);
+console.log(forecast);
+
+
+//set up variables to pass into API call
+// var time = new Date().setDate(0);
+// post: req.body.longitude , get: req.query
+var longitude = -105.2797;
+var latitude = 40.0176 ;
+
+//make call to API
+// forecast.get(latitude, longitude, function (err, res, data){
+// 	if (err) throw err;
+// 	console.log(data)
+// });
+
+//ajax get request /getweather
+//from html5 geolocation method
+
+//ajax request to /getweather route
+app.get('/getweather', function(req, res){
+	forecast.get(req.query.latitude, req.query.longitude, function (err, res, data){
+	if (err) throw err;
+	res.send(data)
+});
+})
+
 
 
 // development only
@@ -37,8 +73,8 @@ if ('development' == app.get('env')) {
 //app.get('/', routes.index);
 app.get('/users', user.list);
 
-app.get('/', function(){
-
+app.get('/', function(req, res){
+	res.render('index')
 })
 
 
