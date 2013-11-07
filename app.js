@@ -43,8 +43,8 @@ console.log(forecast);
 //set up variables to pass into API call
 // var time = new Date().setDate(0);
 // post: req.body.longitude , get: req.query
-var longitude = -105.2797;
-var latitude = 40.0176 ;
+// var longitude = -105.2797;
+// var latitude = 40.0176 ;
 
 //make call to API
 // forecast.get(latitude, longitude, function (err, res, data){
@@ -55,11 +55,16 @@ var latitude = 40.0176 ;
 //ajax get request /getweather
 //from html5 geolocation method
 
+//store the Forecast weather data
+var weatherData = {};
+
 //ajax request to /getweather route
 app.get('/getweather', function(req, res){
+	console.log(req.query.latitude);
 	forecast.get(req.query.latitude, req.query.longitude, function (err, res, data){
 	if (err) throw err;
-	res.send(data)
+	console.log(data)
+	// res.send(data)
 });
 })
 
