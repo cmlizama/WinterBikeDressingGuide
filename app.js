@@ -41,8 +41,10 @@ console.log(forecast);
 
 
 //set up variables to pass into API call
-// var time = new Date().setDate(0);
+
 // post: req.body.longitude , get: req.query
+
+//boulder geolocation info:
 // var longitude = -105.2797;
 // var latitude = 40.0176 ;
 
@@ -56,19 +58,32 @@ console.log(forecast);
 //from html5 geolocation method
 
 //store the Forecast weather data
-var weatherData = {};
+//var weatherData = {};
+
+//need to get data.currently.apparentTemperature
+
 
 //ajax request to /getweather route
 app.get('/getweather', function(req, res){
-	console.log(req.query.latitude);
-	forecast.get(req.query.latitude, req.query.longitude, function (err, res, data){
+	//console.log(req.query.latitude);
+	forecast.get(req.query.latitude, req.query.longitude, function (err, res2, data){
 	if (err) throw err;
+
 	console.log(data)
-	// res.send(data)
+	console.log(data.currently.apparentTemperature)
+	console.log(data.currently.summary)
+
+    //specify the data u want to extract from forecast.io JSON
+
+    res.render('index', {realFeel : data.currently.apparentTemperature, 
+    	                 summary : data.currently.summary})
+
 });
-})
+});
 
 
+//if (realFeel > 40 && realFeel < 50) {clothingSugguestion = "blah"}
+//res.send(clothingSuggestion)
 
 // development only
 if ('development' == app.get('env')) {
