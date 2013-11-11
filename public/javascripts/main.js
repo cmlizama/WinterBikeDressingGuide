@@ -6,12 +6,21 @@
 
 $(function(){
 
-        navigator.geolocation.getCurrentPosition(function(position){
+    navigator.geolocation.getCurrentPosition(function(position){
 
-            $.get('/getweather', {latitude : position.coords.latitude, longitude : position.coords.longitude  }, function(data){
+        $.get('/getweather', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
                 console.log(data)
+                console.log(data.realFeel)
+
+               // $('.result').append(data.realFeel)
+
             } )
            });
+
+    // $('btnLoad').button().click(function(){
+    // 	$('').text(data.);
+    // })
+
 
 
 });
