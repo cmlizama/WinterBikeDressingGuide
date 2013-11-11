@@ -4,25 +4,28 @@ block content
   h1 Biking conditions today
   p Today's weather will be 
 
-  p= realFeel
-  p= summary
-
-
-  button(id='btnLoad') Load data
+  div(id='temp') 
+  p and
+  div(id='report') 
   
-  div(id='result')
+
+  
+  div(id='temp')
 
   h2 You should wear
 
-  p= clothingSuggestion
+  div(id='clothingSuggestion')
 
-  p Too warm?
-  p Too cold?
+  button Too warm?
+  button Too cold?
 
   img
 
 
   p Weather data provided by Forecast.io
+
+  //- add Handlebars templates
+  include templates.html
 
   script(src='http://code.jquery.com/jquery-2.0.3.min.js')
   script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")

@@ -9,7 +9,6 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
-var socketio = require('socket.io')
 
 var app = express();
 
@@ -28,10 +27,6 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Create the server
-var server = http.createServer(app)
-//Start the web socket server
-var io = socketio.listen(server);
 
 //create my own instance of Forecast
 //my own Forecast.io API key a0a8fcbc5abfcc9ba961173dcc60e214
@@ -72,15 +67,14 @@ app.get('/getweather', function(req, res){
     var weatherData = {realFeel : data.currently.apparentTemperature,
      					summary : data.currently.summary}
 
-    res.sender('index', {realFeel : data.currently.apparentTemperature,
+    res.send('index', {realFeel : data.currently.apparentTemperature,
      					summary : data.currently.summary})
 
 
 });
 });
 
-//set up socket events
-io.sockets.on('connection', function(socket){ });
+
 
 
 
