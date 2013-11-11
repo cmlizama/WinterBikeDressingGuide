@@ -48,12 +48,5 @@ var chartData = [
 	    'chest' : "Light shirt",
 	    'feet' : 'Summer shoes' ,
 	    'hands' : 'Bare hands'
-		} },
-{'h' : {'head' : 'Bare' ,
-	    'legs' : 'Light pants or shorts' ,
-	    'chest' : 'Light shirt' ,
-	    'feet' : 'Summer shoes' ,
-	    'hands' : 'Bare hands'
-		} },
-
+		} }
 ] 

@@ -12,20 +12,26 @@ block content
   
   div(id='temp')
 
-  h2 You should wear
+  h2 You might consider wearing:
 
   div(id='clothingSuggestion')
 
-  button Too warm?
-  button Too cold?
+  div(id='head')
+  div(id='legs')
+  div(id='chest')
+  div(id='feet')
+  div(id='hands')
+
+
+  //-button Too warm?
+  //-button Too cold?
 
   img
 
 
-  p Weather data provided by Forecast.io
+  
+  a(href='http://forecast.io') Weather data provided by Forecast.io
 
-  //- add Handlebars templates
-  include templates.html
 
   script(src='http://code.jquery.com/jquery-2.0.3.min.js')
   script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
