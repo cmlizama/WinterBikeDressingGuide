@@ -69,29 +69,31 @@ $(function(){
 //                    $('#hands').text('Bare hands')
                 }
 
+                //the weather forecast for 8 hours into the future
+                $('#nightForecast').html(data.nightForecast)
 
 
            });
 
 
-    $.get('/getPhoto', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
-        console.log(data)
-        //$('#insta').html(data)
-        //loop thru data and populate DOM
-        // for(i=0; i<data.length; i++){
-        //     $('#insta').html(<img src=data.object.images.url)
-        // }
+    // $.get('/getPhoto', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
+    //     console.log(data)
+    //     //$('#insta').html(data)
+    //     //loop thru data and populate DOM
+    //     // for(i=0; i<data.length; i++){
+    //     //     $('#insta').html(<img src=data.object.images.url)
+    //     // }
 
-    })
-
-
-
-
-
+    // })
     });
-    //navigator.geolocation.getCurrentPosition(function(position){
 
-        //}
+
+    navigator.geolocation.getCurrentPosition(function(position){
+        $.get('/getFutureWeather', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
+            console.log(data)
+            $('#nightForecast').html(data.nightForecast)
+        });
+    });
 
 
 

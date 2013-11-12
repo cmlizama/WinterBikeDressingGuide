@@ -55,40 +55,47 @@ console.log(forecast);
 
 //ajax request to /getweather route
 app.get('/getweather', function(req, res){
+
 	//console.log(req.query.latitude);
 	forecast.get(req.query.latitude, req.query.longitude, function (err, res2, data){
 	if (err) throw err;
-
+  //console.log(data)
 	console.log(data.currently.apparentTemperature)
 	console.log(data.currently.summary)
-
     //specify the data u want to extract from forecast.io JSON
-
-
     res.send('index', {realFeel : data.currently.apparentTemperature,
      					summary : data.currently.summary})
-});
+          });
 });
 
 
-//set up instagram api options
-Instagram.set('client_id', '3c1bd90ae34d474d89a340909fa657e7');
-Instagram.set('client_secret', 'e0e20c1ccfd1421b8603ca4581f8d57a');
+app.get('/getFutureWeather', function(req, res){
+  //make another request for weather data in +8 hours
+  var rideHomeTime = ((new Date().getTime()) + 28800000)
+  forecast.getAtTime(req.query.latitude, req.query.longitude, rideHomeTime, function(err, res3, data){
+    console.log('future data below')
+    console.log(data)
+    res.send({nightForecast:data.currently.apparentTemperature})
+  });
+});
+
+
+
 
 
 //route for instagram photos
-app.get('/getPhoto', function(req, res){
-  var lon = req.query.longitude;
-  var lat = req.query.latitude;
-  console.log(lon)
+// app.get('/getPhoto', function(req, res){
+//   var lon = req.query.longitude;
+//   var lat = req.query.latitude;
+//   console.log(lon)
 
-  request.get('https://api.instagram.com/v1/tags/biking/media/recent?client_id=3c1bd90ae34d474d89a340909fa657e7&lat='+lat+'&lng='+lon, function(err, response, body){
-     body = JSON.parse(body)
-      // console.log(body.data)
-      res.send(body.data)
+//   request.get('https://api.instagram.com/v1/tags/biking/media/recent?client_id=3c1bd90ae34d474d89a340909fa657e7&lat='+lat+'&lng='+lon, function(err, response, body){
+//      body = JSON.parse(body)
+//       // console.log(body.data)
+//       res.send(body.data)
 
-  });
-});
+//   });
+// });
 
 
 
