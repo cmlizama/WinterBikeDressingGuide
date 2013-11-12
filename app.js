@@ -9,6 +9,9 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
+var request = require('request');
+
+var Instagram = require('instagram-node-lib');
 
 var app = express();
 
@@ -40,8 +43,6 @@ var forecast = new Forecast(options);
 console.log(forecast);
 
 
-//set up variables to pass into API call
-
 // post: req.body.longitude , get: req.query
 
 //boulder geolocation info:
@@ -51,7 +52,6 @@ console.log(forecast);
 //ajax get request /getweather
 //from html5 geolocation method
 
-var weatherData = {};
 
 //ajax request to /getweather route
 app.get('/getweather', function(req, res){
@@ -64,25 +64,33 @@ app.get('/getweather', function(req, res){
 
     //specify the data u want to extract from forecast.io JSON
 
-    var weatherData = {realFeel : data.currently.apparentTemperature,
-     					summary : data.currently.summary}
 
     res.send('index', {realFeel : data.currently.apparentTemperature,
      					summary : data.currently.summary})
-
-
 });
 });
 
 
+//set up instagram api options
+Instagram.set('client_id', '3c1bd90ae34d474d89a340909fa657e7');
+Instagram.set('client_secret', 'e0e20c1ccfd1421b8603ca4581f8d57a');
 
 
+//route for instagram photos
+app.get('/getPhoto', function(req, res){
+  var lon = req.query.longitude;
+  var lat = req.query.latitude;
+  console.log(lon)
 
+  request.get('https://api.instagram.com/v1/tags/biking/media/recent?client_id=3c1bd90ae34d474d89a340909fa657e7&lat='+lat+'&lng='+lon, function(err, response, body){
+     body = JSON.parse(body)
+      // console.log(body.data)
+      res.send(body.data)
 
-app.get('/btnLoad', function(req, res){
-
-	res.send(weatherData)
+  });
 });
+
+
 
 
 // take in geolocation and weather data on a landing page

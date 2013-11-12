@@ -1,5 +1,8 @@
 extends layout
 
+head
+  include main.css
+
 block content
   h1 Biking conditions today
   p Today's weather will be 
@@ -12,7 +15,7 @@ block content
   
   div(id='temp')
 
-  h2 You might consider wearing:
+  h4 You might consider wearing:
 
   div(id='clothingSuggestion')
 
@@ -26,11 +29,12 @@ block content
   //-button Too warm?
   //-button Too cold?
 
-  img
+  div(id='insta')
 
 
   
   a(href='http://forecast.io') Weather data provided by Forecast.io
+  p Powered by Node.js and brought to you by Chris Lizama in Boulder, CO
 
 
   script(src='http://code.jquery.com/jquery-2.0.3.min.js')
