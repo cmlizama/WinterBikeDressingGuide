@@ -78,9 +78,9 @@ $(function(){
         console.log(data)
         //$('#insta').html(data)
         //loop thru data and populate DOM
-        for(i=0; i<data.length; i++){
-            $('#insta').html(<img src=data.object.images.url)
-        }
+        // for(i=0; i<data.length; i++){
+        //     $('#insta').html(<img src=data.object.images.url)
+        // }
 
     })
 

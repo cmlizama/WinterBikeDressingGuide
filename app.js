@@ -8,6 +8,7 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var forecastKey = require('./config.js')
 
 var request = require('request');
 
@@ -31,15 +32,14 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//create my own instance of Forecast
-//my own Forecast.io API key a0a8fcbc5abfcc9ba961173dcc60e214
-var options = {
-  APIKey: 'a0a8fcbc5abfcc9ba961173dcc60e214'
-};
+console.log(forecastKey);
 
-console.log(options);
+var options = {
+  APIKey : forecastKey
+}
 
 var forecast = new Forecast(options);
+
 console.log(forecast);
 
 
