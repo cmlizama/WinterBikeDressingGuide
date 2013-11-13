@@ -16,6 +16,7 @@ body {
   background: transparent;
   opacity: 0.9;
   color: #000;
+  text-shadow: 2px #000;
 }
 
 a {
