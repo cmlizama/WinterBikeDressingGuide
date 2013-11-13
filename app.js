@@ -55,14 +55,14 @@ app.get('/getweather', function(req, res){
 
 	//console.log(req.query.latitude);
 	forecast.get(req.query.latitude, req.query.longitude, function (err, res2, data){
-	if (err) throw err;
+	//if (err) throw err;
   console.log("error " + err)
   console.log('data ' + data)
   //console.log(data)
 	console.log("current" + data.currently.apparentTemperature)
 	console.log("current" + data.currently.summary)
     //specify the data u want to extract from forecast.io JSON
-    res.send('index', {realFeel : data.currently.apparentTemperature,
+    res.send({realFeel : data.currently.apparentTemperature,
      					summary : data.currently.summary})
           });
 });
