@@ -21,7 +21,7 @@ var Forecast = require('forecast.io');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
+//app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -43,14 +43,9 @@ var forecast = new Forecast(options);
 console.log(forecast);
 
 
-// post: req.body.longitude , get: req.query
-
 //boulder geolocation info:
 // var longitude = -105.2797;
 // var latitude = 40.0176 ;
-
-//ajax get request /getweather
-//from html5 geolocation method
 
 
 //ajax request to /getweather route
@@ -75,37 +70,12 @@ app.get('/getFutureWeather', function(req, res){
   forecast.getAtTime(req.query.latitude, req.query.longitude, rideHomeTime, function(err, res3, data){
     console.log('future data below')
     console.log(data)
-    res.send({nightForecast:data.currently.apparentTemperature})
+    res.send({nightForecast:data.currently.apparentTemperature, nightReport:data.currently.summary})
   });
 });
 
 
 
-
-
-//route for instagram photos
-// app.get('/getPhoto', function(req, res){
-//   var lon = req.query.longitude;
-//   var lat = req.query.latitude;
-//   console.log(lon)
-
-//   request.get('https://api.instagram.com/v1/tags/biking/media/recent?client_id=3c1bd90ae34d474d89a340909fa657e7&lat='+lat+'&lng='+lon, function(err, response, body){
-//      body = JSON.parse(body)
-//       // console.log(body.data)
-//       res.send(body.data)
-
-//   });
-// });
-
-
-
-
-// take in geolocation and weather data on a landing page
-//then render template with weather data after user hits an Enter button
-
-
-//if (realFeel > 40 && realFeel < 50) {clothingSugguestion = "blah"}
-//res.send(clothingSuggestion)
 
 // development only
 if ('development' == app.get('env')) {

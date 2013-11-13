@@ -22,8 +22,7 @@ $(function(){
                 console.log(data)
                 console.log(data.realFeel)
 
-                $('#temp').html(data.realFeel)
-                $('#report').html(data.summary)
+                $('#report').html(data.realFeel + ' & ' + data.summary)
             
                     if ((data.realFeel) < -15) {
                     $('#head').text('Facemask, scarf, hat and goggles')
@@ -76,22 +75,13 @@ $(function(){
            });
 
 
-    // $.get('/getPhoto', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
-    //     console.log(data)
-    //     //$('#insta').html(data)
-    //     //loop thru data and populate DOM
-    //     // for(i=0; i<data.length; i++){
-    //     //     $('#insta').html(<img src=data.object.images.url)
-    //     // }
-
-    // })
     });
 
 
     navigator.geolocation.getCurrentPosition(function(position){
         $.get('/getFutureWeather', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
             console.log(data)
-            $('#nightForecast').html(data.nightForecast)
+            $('#nightForecast').html(data.nightForecast + ' & ' + data.nightReport)
         });
     });
 

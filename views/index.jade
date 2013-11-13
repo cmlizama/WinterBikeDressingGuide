@@ -2,21 +2,17 @@ extends layout
 
 head
   include main.css
+  link(href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css') 
+  link(href="http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic", type="text/css")
 
 block content
   h1 Biking conditions today
 
-  img(id='bikepic' src="/images/bike.svg")
+  img.animated.bounce(id='bikepic' src="/images/bike.svg")
 
   p The weather feels like
 
-  div(id='temp') 
-  p and
-  div(id='report') 
-  p The weather in 8 hours will feel like
-  div(id='nightForecast') 
-  
-
+  div(id='report')  
   
   div(id='temp')
 
@@ -31,15 +27,14 @@ block content
   div(id='hands')
 
 
-  //-button Too warm?
-  //-button Too cold?
+  h4 The weather in 8 hours will feel like
+  div(id='nightForecast')
+  h3 So you might want to bring
 
-  div(id='insta')
 
-
-  
-  a(href='http://forecast.io') Weather data provided by Forecast.io
-  p Powered by Node.js and brought to you by Chris Lizama in Boulder, CO
+  footer.navbar.navbar-default.navbar-fixed-bottom.footer-bar
+    a(href='http://forecast.io') Weather data provided by Forecast.io
+    p Powered by Node.js and brought to you by Chris Lizama in Boulder, CO
 
 
   script(src='http://code.jquery.com/jquery-2.0.3.min.js')
