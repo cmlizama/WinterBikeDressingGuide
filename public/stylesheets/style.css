@@ -4,15 +4,18 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.8;
+  opacity: 0.66;
 }
 /* http://farm6.staticflickr.com/5209/5353257181_714daaeae6_z.jpg*/
 /*http://www.tumblr.com/photo/1280/corona--graminea/1702589964/1/tumblr_lcjuisLfbX1qa0qzp */
 body {
 	-webkit-backface-visibility: hidden;
 	padding: 50px;
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 14px Helvetica, Arial, sans-serif;
 	text-align: center;
+  background: transparent;
+  opacity: 0.9;
+  color: #000;
 }
 
 a {
@@ -42,8 +45,18 @@ p {
     margin: 0 0 23px 0;
     }
 
-
-
+.navbar {
+  bottom: 0;
+  margin-bottom: 0;
+  border-width: 0 0 0 0;
+  position: fixed;
+  z-index: 1030;
+  min-height: 30px;
+  display: block;
+  background-color:#000 ;
+  color: #fff;
+  padding-top:2%;
+}
 
 
 /* animate.css code*/

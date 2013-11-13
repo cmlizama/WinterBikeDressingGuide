@@ -2,7 +2,6 @@ extends layout
 
 head
   include main.css
-  link(href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css') 
   link(href="http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic", type="text/css")
 
 block content
@@ -34,10 +33,11 @@ block content
 
   footer.navbar.navbar-default.navbar-fixed-bottom.footer-bar
     a(href='http://forecast.io') Weather data provided by Forecast.io
-    p Powered by Node.js and brought to you by Chris Lizama in Boulder, CO
+    p Powered by Node.js and brought to you by <a href='https://github.com/cmlizama/'>Chris Lizama</a> in Boulder, CO
 
 
   script(src='http://code.jquery.com/jquery-2.0.3.min.js')
   script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+  script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js")
   script(src="/javascripts/main.js")
 
