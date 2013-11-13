@@ -57,8 +57,8 @@ app.get('/getweather', function(req, res){
 	forecast.get(req.query.latitude, req.query.longitude, function (err, res2, data){
 	if (err) throw err;
   //console.log(data)
-	console.log(data.currently.apparentTemperature)
-	console.log(data.currently.summary)
+	console.log("current" + data.currently.apparentTemperature)
+	console.log("current" + data.currently.summary)
     //specify the data u want to extract from forecast.io JSON
     res.send('index', {realFeel : data.currently.apparentTemperature,
      					summary : data.currently.summary})
@@ -70,8 +70,8 @@ app.get('/getFutureWeather', function(req, res){
   //make another request for weather data in +8 hours
   var rideHomeTime = ((new Date().getTime()) + 28800000)
   forecast.getAtTime(req.query.latitude, req.query.longitude, rideHomeTime, function(err, res3, data){
-    console.log('future data below')
-    console.log(data)
+    //console.log('future data below')
+    //console.log(data)
     res.send({nightForecast:data.currently.apparentTemperature, nightReport:data.currently.summary})
   });
 });
