@@ -9,7 +9,7 @@ block content
 
   img.animated.bounce(id='bikepic' src="/images/bike.svg")
 
-  p The weather feels like
+  h4 The weather feels like
 
   div(id='report')  
   
@@ -34,8 +34,9 @@ block content
   div(id='target')
 
   footer.navbar.navbar-default.navbar-fixed-bottom.footer-bar
-    a(href='http://forecast.io') Weather data provided by Forecast.io
-    p Powered by Node.js and brought to you by <a href='https://github.com/cmlizama/'>Chris Lizama</a> in Boulder, CO
+    a.credits(href='http://forecast.io') Weather data provided by Forecast.io
+    a.credits(href='http://instagram.com') Thumbnails from Instagram #biking
+    p.credits Powered by Node.js and brought to you by <a href='https://github.com/cmlizama/'>Chris Lizama</a> in Boulder, CO
 
 
   script(src='http://code.jquery.com/jquery-2.0.3.min.js')

@@ -12,8 +12,6 @@ var forecastKey = require('./config.js')
 
 var request = require('request');
 
-var Instagram = require('instagram-node-lib');
-
 var app = express();
 
 // require the forecast.io module

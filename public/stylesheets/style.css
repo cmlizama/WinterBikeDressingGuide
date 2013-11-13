@@ -58,6 +58,10 @@ p {
   padding-top:2%;
 }
 
+.credits {
+  width: 100%;
+  min-width: 100%;
+}
 
 /* animate.css code*/
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */

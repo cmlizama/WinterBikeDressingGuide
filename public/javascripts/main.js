@@ -20,6 +20,8 @@ $(function(){
 
         $.get('/getweather', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
                 console.log(data)
+
+                //try to return this outside the function scope, so the future forecast can access it
                 console.log(data.realFeel)
 
                 $('#report').html(data.realFeel + ' & ' + data.summary)
@@ -92,6 +94,9 @@ $(function(){
     var access_parameters = {access_token:access_token}
 
     function grabImages(access_parameters) {
+
+        //format: https://api.instagram.com/v1/tags *tag* /media/recent?callback=?&count= *count*
+        //GET/locations/location-id/media/recentGet a list of media objects from a given location
 
         var instagramUrl = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?callback=?&count='+ count;
 
