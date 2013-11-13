@@ -8,7 +8,11 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var forecastKey = require('./config.js')
+
+//file to hold my forecast api key
+//set process variable in heroku
+//var forecastKey = require('./config.js')
+var forecastKey = process.env.FORECAST_IO_KEY || require('./config.js')
 
 var request = require('request');
 
