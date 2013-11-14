@@ -9,6 +9,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
+
 //file to hold my forecast api key
 //set process variable in heroku
 //var forecastKey = require('./config.js')
@@ -34,7 +35,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-console.log(forecastKey);
+//console.log(forecastKey);
 
 var options = {
   APIKey : forecastKey
@@ -42,7 +43,7 @@ var options = {
 
 var forecast = new Forecast(options);
 
-console.log(forecast);
+//console.log(forecast);
 
 
 //boulder geolocation info:
@@ -56,11 +57,6 @@ app.get('/getweather', function(req, res){
 	//console.log(req.query.latitude);
 	forecast.get(req.query.latitude, req.query.longitude, function (err, res2, data){
 	if (err) throw err;
-  console.log("error " + err)
-  console.log('data ' + data)
-  //console.log(data)
-	console.log("current" + data.currently.apparentTemperature)
-	console.log("current" + data.currently.summary)
     //specify the data u want to extract from forecast.io JSON
     res.send({realFeel : data.currently.apparentTemperature,
      					summary : data.currently.summary})
@@ -77,7 +73,6 @@ app.get('/getFutureWeather', function(req, res){
     res.send({nightForecast:data.currently.apparentTemperature, nightReport:data.currently.summary})
   });
 });
-
 
 
 

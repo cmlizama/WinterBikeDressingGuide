@@ -1,18 +1,5 @@
-//connect the socket.io server
-//define socket events
-//attach events
-
-//connect socket to client
-// var socket = io.connect();
-// socket.on('connect', function(){
-//     console.log('Hello world');
-// });
-
-//set up AJAX call in case user requests a warmer or cooler outfit
-//also  get user location with getCurrentPosition() or ask for their input
-// send geolocation datat to /getweather route
-
-
+// get user location with getCurrentPosition() or ask for their input
+// send geolocation data to /getweather route
 
 $(function(){
 
@@ -72,10 +59,7 @@ $(function(){
 
                 //the weather forecast for 8 hours into the future
                 $('#nightForecast').html(data.nightForecast)
-
-
            });
-
 
     });
 
@@ -86,49 +70,42 @@ $(function(){
             $('#nightForecast').html(data.nightForecast + ' & ' + data.nightReport)
         });
     });
-
-
+    //tag biking and bike to narrow it down
     var tag = "biking";
-    var count = 2;
+    var count = 4;
     var access_token = '22033045.ea9028a.eec94286a2e049429fe51c3fbc95db20';
     var access_parameters = {access_token:access_token}
-
     function grabImages(access_parameters) {
-
+         navigator.geolocation.getCurrentPosition(function(position){
         //format: https://api.instagram.com/v1/tags *tag* /media/recent?callback=?&count= *count*
         //GET/locations/location-id/media/recentGet a list of media objects from a given location
-
-        var instagramUrl = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?callback=?&count='+ count;
-
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var instagramUrl = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?callback=?&count='+ count + '&lat=' + latitude+'&lng='+longitude+'&distance=5000';
         $.getJSON(instagramUrl, access_parameters, onDataLoaded);
+        });
     }
 
-
     function onDataLoaded(instagram_data) {
-
       if(instagram_data.meta.code == 200) {
-
         var photos = instagram_data.data;
-
-
+        console.log("insta data" + photos)
         if(photos.length > 0) {
-
           for (var key in photos){
                 var photo = photos[key];
-                $('#target').append('<img src="'+photo.images.thumbnail.url+'">');
+                $('#instaTarget').append('<img src="'+photo.images.thumbnail.url+'">');
           }
         } else {
-
-          $('#target').append('Hmm.  I could not find anything!');
+          $('#instaTarget').append('Hmm.  I could not find anything!');
             }
         } else {
-
           var error = data.meta.error_message;
-          $('#target').append('Something happened, Instagram said: ' + error);
+          $('#instaTarget').append('Something happened, Instagram said: ' + error);
         }
       }
-    
 
     grabImages(access_parameters);
+
+
 
 });

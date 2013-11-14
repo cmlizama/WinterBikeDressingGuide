@@ -64,6 +64,11 @@ p {
   min-width: 100%;
 }
 
+#target {
+
+  text-align: center;
+}
+
 /* animate.css code*/
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 
