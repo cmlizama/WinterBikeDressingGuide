@@ -6,10 +6,10 @@ $(function(){
     navigator.geolocation.getCurrentPosition(function(position){
 
         $.get('/getweather', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
-                console.log(data)
+                //console.log(data)
 
                 //try to return this outside the function scope, so the future forecast can access it
-                console.log(data.realFeel)
+                //console.log(data.realFeel)
 
                 $('#report').html(data.realFeel + ' & ' + data.summary)
             
@@ -65,14 +65,16 @@ $(function(){
 
 
     navigator.geolocation.getCurrentPosition(function(position){
-        $.get('/getFutureWeather', {latitude:position.coords.latitude, longitude:position.coords.longitude}, function(data){
+        $.get('/getFutureWeather', {latitude:Math.abs(position.coords.latitude), longitude:Math.abs(position.coords.longitude)}, function(data){
             console.log(data)
             $('#nightForecast').html(data.nightForecast + ' & ' + data.nightReport)
         });
     });
+
+
     //tag biking and bike to narrow it down
     var tag = "biking";
-    var count = 4;
+    var count = 5;
     var access_token = '22033045.ea9028a.eec94286a2e049429fe51c3fbc95db20';
     var access_parameters = {access_token:access_token}
     function grabImages(access_parameters) {
@@ -98,10 +100,10 @@ $(function(){
         } else {
           $('#instaTarget').append('Hmm.  I could not find anything!');
             }
-        } else {
-          var error = data.meta.error_message;
-          $('#instaTarget').append('Something happened, Instagram said: ' + error);
-        }
+        }// else {
+          //var error = data.meta.error_message;
+         // $('#instaTarget').append('Something happened, Instagram said: ' + error);
+        //}
       }
 
     grabImages(access_parameters);

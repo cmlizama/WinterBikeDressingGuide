@@ -35,10 +35,10 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//console.log(forecastKey);
+console.log(forecastKey);
 
 var options = {
-  APIKey : forecastKey
+  APIKey : 'a0a8fcbc5abfcc9ba961173dcc60e214'
 }
 
 var forecast = new Forecast(options);
@@ -54,8 +54,10 @@ var forecast = new Forecast(options);
 //ajax request to /getweather route
 app.get('/getweather', function(req, res){
 
-	//console.log(req.query.latitude);
-	forecast.get(req.query.latitude, req.query.longitude, function (err, res2, data){
+	//console.log("Lat: " + req.query.latitude);
+  //console.log("Long: " + req.query.longitude);
+  //console.log("Abs val of long: " + Math.abs(req.query.longitude))
+	forecast.get(req.query.latitude, Math.abs(req.query.longitude), function (err, res2, data){
 	if (err) throw err;
     //specify the data u want to extract from forecast.io JSON
     res.send({realFeel : data.currently.apparentTemperature,
@@ -68,8 +70,7 @@ app.get('/getFutureWeather', function(req, res){
   //make another request for weather data in +8 hours
   var rideHomeTime = ((new Date().getTime()) + 28800000)
   forecast.getAtTime(req.query.latitude, req.query.longitude, rideHomeTime, function(err, res3, data){
-    //console.log('future data below')
-    //console.log(data)
+    //console.log('future data below:' + data)
     res.send({nightForecast:data.currently.apparentTemperature, nightReport:data.currently.summary})
   });
 });
@@ -81,7 +82,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/users', user.list);
+//app.get('/users', user.list);
 
 app.get('/', function(req, res){
 	res.render('index')
